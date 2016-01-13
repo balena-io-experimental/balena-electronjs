@@ -2,6 +2,8 @@
 
 a boilerplate for developing kiosks, digital signage or other human-machine interaction projects based on [ElectronJS](http://electron.atom.io/) and [resin.io](http://resin.io)
 
+This is the very basic layer on which [snappin.io](http://snappin.io) builds its touch-enabled apps, further improved with a dedicated SDK which provide slightly better performances on common tasks like multimedia handling and real-time communication
+
 ### PRE-REQUISITES
 this application is meant to be deployed to [RaspberryPi2](https://www.raspberrypi.org/products/raspberry-pi-2-model-b/) devices via [resin.io](http://resin.io).
 
