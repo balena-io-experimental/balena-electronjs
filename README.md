@@ -15,6 +15,8 @@ Achieving kinda-smooth desktop application display on a raspberrypi is hard. Thi
 
 ### URL LAUNCHER config via ENV VARS
 
+simply set this environment varables in your app via the resin dashboard to configure the behavour of your devices
+
 * **`URL_LAUNCHER_URL`** *string* - the URL to be loaded. use `file://app/index.hmtl` to load a local electronJS (or any website) app - *defaults to* `http://resin.io`
 * **`URL_LAUNCHER_NODE`** *bool* (converted from *string*) - whether or not enable nodejs - *defaults to* `false`
 * **`URL_LAUNCHER_KIOSK`** *bool* (converted from *string*) - whether or not enter KIOSK mode - *defaults to* `true`
