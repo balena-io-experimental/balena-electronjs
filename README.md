@@ -7,7 +7,7 @@ This is the very basic layer on which [snappin.io](http://snappin.io) builds its
 ### PRE-REQUISITES
 this application is meant to be deployed to [RaspberryPi2](https://www.raspberrypi.org/products/raspberry-pi-2-model-b/) devices via [resin.io](http://resin.io).
 
-At least 128MB of GPU-dedicated RAM is required. You can achieve this following [this instructions](http://docs.resin.io/#/pages/hardware/i2c-and-spi.md#raspberry-pi-camera-module) - only the first parameter `gpu_mem=128` is required
+At least 128MB of GPU-dedicated RAM is required. You can achieve that following [these instructions](http://docs.resin.io/#/pages/hardware/i2c-and-spi.md#raspberry-pi-camera-module) - only the first parameter `gpu_mem=128` is required
 
 ### WHY THIS TEMPLATE
 
