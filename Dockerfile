@@ -52,11 +52,14 @@ RUN apt-get install -y nodejs && npm config set unsafe-perm true
 COPY ./Dockerbin/opt/vc/bin /opt/vc/bin
 RUN chmod +x /opt/vc/bin/* && echo 'export PATH=$PATH:/opt/vc/bin' >> ~/.bashrc
 
+# Move package to filesystem
+COPY ./package.json ./app/
+
+# NPM i app
+RUN npm i  --prefix /app
+
 # Move app to filesystem
 COPY . ./app
-
-# Install NPM dependencies
-RUN npm i --prefix /app
 
 # Move to /app
 WORKDIR /app
