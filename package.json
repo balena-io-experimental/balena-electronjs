@@ -1,0 +1,29 @@
+{
+  "name": "resin-electronjs",
+  "version": "0.0.1",
+  "description": "electronJS-based rpi2 resin application",
+  "main": "main.js",
+  "scripts": {
+    "start": "NODE_ENV=production startx ./node_modules/electron-prebuilt/dist/electron .",
+    "test": "NODE_ENV=development startx ./node_modules/electron-prebuilt/dist/electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fwrgit/resin-electronjs.git"
+  },
+  "keywords": [
+    "resin",
+    "io",
+    "electron",
+    "js"
+  ],
+  "dependencies": {
+    "electron-prebuilt": "^0.35.6",
+  },
+  "author": "Carlo Maria Curinga",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/fwrgit/resin-electronjs/issues"
+  },
+  "homepage": "https://github.com/fwrgit/resin-electronjs#readme"
+}
