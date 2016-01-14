@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/fwrgit/resin-electronjs/issues"
   },
-  "homepage": "https://github.com/fwrgit/resin-electronjs#readme"
+  "homepage": "https://github.com/fwrgit/resin-electronjs#readme",
+  "jshintConfig": {
+    "esnext": true
+  }
 }
