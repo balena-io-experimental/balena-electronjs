@@ -42,7 +42,7 @@ RUN apt-get update && apt-get install -y \
 # Set Xorg and FLUXBOX preferences
 RUN mkdir ~/.fluxbox
 RUN echo -e "xset s off\nxserver-command=X -s 0 dpms" > ~/.fluxbox/startup
-RUN echo -e "#!/bin/sh\n\nexec /usr/bin/X -s 0 dpms -nolisten tcp "$@"" > /etc/X11/xinit/xserverrc
+RUN echo -e "#!/bin/sh\n\nexec /usr/bin/X -s 0 dpms -nocursor -nolisten tcp "$@"" > /etc/X11/xinit/xserverrc
 
 # Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
