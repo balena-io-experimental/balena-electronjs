@@ -20,7 +20,7 @@ We did a lot of researches and tests with several window managers. [Fluxbox](htt
 
 ### URL LAUNCHER config via ENV VARS
 
-simply set this environment varables in your app via the resin dashboard to configure the behaviour of your devices
+simply set these [environment varables](http://docs.resin.io/#/pages/management/env-vars.md) in your app via the resin dashboard to configure the behaviour of your devices
 
 * **`URL_LAUNCHER_URL`** *string* - the URL to be loaded. use `file:///app/app/index.html` to load a local electronJS (or any website) app - *defaults to* `http://resin.io`
 * **`URL_LAUNCHER_NODE`** *bool* (converted from *string*) - whether or not enable nodejs - *defaults to* `false`
