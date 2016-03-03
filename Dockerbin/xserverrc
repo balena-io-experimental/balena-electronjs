@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec /usr/bin/X -s 0 dpms -nolisten tcp "$@"

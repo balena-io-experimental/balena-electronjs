@@ -5,7 +5,7 @@ const BrowserWindow = electron.BrowserWindow;
 
 // simple parameters initialization
 var window = null;
-var resin_toolbar = true;
+var resin_toolbar = false;
 var resin_kiosk = false;
 var resin_node = true;
 

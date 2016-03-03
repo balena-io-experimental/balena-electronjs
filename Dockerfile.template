@@ -1,4 +1,7 @@
-FROM resin/raspberrypi-systemd:latest
+FROM resin/%%RESIN_MACHINE_NAME%%-node:latest
+
+## uncomment if you want systemd
+# ENV INITSYSTEM on
 
 # Install apt deps
 RUN apt-get update && apt-get install -y \
@@ -44,13 +47,8 @@ RUN mkdir ~/.fluxbox
 RUN echo -e "xset s off\nxserver-command=X -s 0 dpms" > ~/.fluxbox/startup
 RUN echo -e "#!/bin/sh\n\nexec /usr/bin/X -s 0 dpms -nocursor -nolisten tcp "$@"" > /etc/X11/xinit/xserverrc
 
-# Install nodejs
-RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
-RUN apt-get install -y nodejs && npm config set unsafe-perm true
-
-# Move Videocore Utils to the right place. These come from https://github.com/raspberrypi/firmware/tree/master/opt/vc/bin
-COPY ./Dockerbin/opt/vc/bin /opt/vc/bin
-RUN chmod +x /opt/vc/bin/* && echo 'export PATH=$PATH:/opt/vc/bin' >> ~/.bashrc
+# Set npm
+RUN npm config set unsafe-perm true
 
 # Move package to filesystem
 COPY ./package.json ./app/
