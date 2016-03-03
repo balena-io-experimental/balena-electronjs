@@ -4,10 +4,10 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 
 // simple parameters initialization
-var window = null;
-var resin_toolbar = false;
-var resin_kiosk = false;
-var resin_node = true;
+let window = null;
+let resin_toolbar = false;
+let resin_kiosk = false;
+let resin_node = true;
 
 /*
   we initialize our application display as a callback of the electronJS "ready" event
