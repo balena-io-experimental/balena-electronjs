@@ -16,7 +16,7 @@ Achieving kinda-smooth desktop application display on a raspberrypi is hard. Thi
 
 ### WHY FLUXBOX
 
-We did a lot of researches and tests with several window managers. Fluxbox ended up being the most balanced between minimum footprint and features
+We did a lot of researches and tests with several window managers. [Fluxbox](http://fluxbox.org/) ended up being the most balanced between minimum footprint and features
 
 ### URL LAUNCHER config via ENV VARS
 
