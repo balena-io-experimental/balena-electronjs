@@ -47,6 +47,6 @@
       }
 
       // the big red button, here we go
-      window.loadURL(process.env.URL_LAUNCHER_URL || "http://resin.io");
+      window.loadURL(process.env.URL_LAUNCHER_URL || "file:///app/app/index.html");
   });
 })();
