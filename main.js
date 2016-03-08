@@ -11,6 +11,16 @@
   let resin_kiosk = false;
   let resin_node = true;
 
+
+  // enable touch events if your device supports them
+  if (process.env.URL_LAUNCHER_TOUCH && process.env.URL_LAUNCHER_TOUCH === "true") {
+    app.commandLine.appendSwitch("--touch-devices");
+  }
+  // simulate touch events - might be useful for touchscreen with partial driver support
+  if (process.env.URL_LAUNCHER_TOUCH_SIMULATE && process.env.URL_LAUNCHER_TOUCH_SIMULATE === "true") {
+    app.commandLine.appendSwitch("--simulate-touch-screen-with-mouse");
+  }
+
   /*
     we initialize our application display as a callback of the electronJS "ready" event
   */
