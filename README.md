@@ -30,5 +30,5 @@ simply set these [environment varables](http://docs.resin.io/#/pages/management/
 * **`URL_LAUNCHER_CONSOLE`** *bool* (converted from *string*) - set to "true" to display the debug console -  *defaults to*  `false`
 * **`URL_LAUNCHER_WIDTH`**  *int* (converted from *string*) -  - *defaults to* `1920`
 * **`URL_LAUNCHER_HEIGHT`**  *int* (converted from *string*) -  - *defaults to* `1080`
-* **`URL_LAUNCHER_TOUCH`** *string* - enables touch events if your device supports them
-* **`URL_LAUNCHER_TOUCH_SIMULATE`** *string* - simulates touch events - might be useful for touchscreen with partial driver support - be aware this could be a performance hog
+* **`URL_LAUNCHER_TOUCH`** *bool* (converted from *string*) - enables touch events if your device supports them  - *defaults to* `false`
+* **`URL_LAUNCHER_TOUCH_SIMULATE`** *bool* (converted from *string*) - simulates touch events - might be useful for touchscreen with partial driver support - be aware this could be a performance hog  - *defaults to* `false`
