@@ -51,6 +51,16 @@
         }
       });
 
+      window.webContents.on('did-finish-load', function() {
+        // The flash of white is still present for a very short
+        // while after the WebView reports it finished loading
+        // taken from etcher - https://goo.gl/n5X0gY )
+        setTimeout(function() {
+          window.show();
+        }, 100);
+
+      });
+
       // if the env-var is set to true, a portion of the screen will be dedicated to the chrome-dev-tools
       if (process.env.URL_LAUNCHER_CONSOLE && process.env.URL_LAUNCHER_CONSOLE === "true") {
         window.openDevTools();
