@@ -1,7 +1,7 @@
 {
   "name": "resin-electronjs",
   "version": "0.0.2",
-  "description": "electronJS-based rpi2 resin application",
+  "description": "electronJS-based rpi resin application",
   "main": "main.js",
   "scripts": {
     "start": "NODE_ENV=production startx ./node_modules/electron-prebuilt/dist/electron .",
