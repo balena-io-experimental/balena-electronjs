@@ -6,7 +6,7 @@ a boilerplate for developing kiosks, digital signage or other human-machine inte
 This is the very basic layer on which [snappin.io](http://snappin.io) builds its touch-enabled apps.
 
 ### PRE-REQUISITES
-this application is meant to be deployed to [RaspberryPi2](https://www.raspberrypi.org/products/raspberry-pi-2-model-b/) devices via [resin.io](http://resin.io).
+this application is meant to be deployed to [RaspberryPi](https://www.raspberrypi.org/products/) devices via [resin.io](http://resin.io).
 
 At least 64MB of GPU-dedicated RAM is required. You can achieve that locally following [these instructions](http://docs.resin.io/#/pages/hardware/i2c-and-spi.md#raspberry-pi-camera-module) (only the first parameter `gpu_mem=64` is required) or, __as we strongly suggest__, set it remotely with Resin's [Advanced Boot Configuration](http://docs.resin.io/#/pages/configuration/advanced.md#modifying-config-txt-remotely-) feature.
 
