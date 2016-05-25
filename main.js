@@ -44,9 +44,6 @@
         title: process.env.URL_LAUNCHER_TITLE || "RESIN.IO",
         kiosk: resin_kiosk,
         webPreferences: {
-          experimentalFeatures: true,
-          overlayScrollbars: true,
-          overlayFullscreenVideo: true,
           nodeIntegration: resin_node
         }
       });
