@@ -56,8 +56,12 @@ COPY ./package.json ./app/
 # NPM i app
 RUN npm i  --prefix /app
 
+
 # Move app to filesystem
 COPY . ./app
+
+# NPM rebuild node native modules after electron is installed.
+RUN ./app/node_modules/.bin/electron-rebuild
 
 # Start app
 CMD ["bash", "/app/start.sh"]
