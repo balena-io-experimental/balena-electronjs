@@ -16,7 +16,8 @@
         "URL_LAUNCHER_HEIGHT": (process.env.URL_LAUNCHER_HEIGHT == null) ? 1080 : process.env.URL_LAUNCHER_HEIGHT,
         "URL_LAUNCHER_TITLE": (process.env.URL_LAUNCHER_TITLE == null) ? "RESIN.IO" : process.env.URL_LAUNCHER_TITLE,
         "URL_LAUNCHER_CONSOLE": (process.env.URL_LAUNCHER_CONSOLE == null) ? 0 : process.env.URL_LAUNCHER_CONSOLE,
-        "URL_LAUNCHER_URL": (process.env.URL_LAUNCHER_URL == null) ? "file:////usr/src/app/data/index.html" : process.env.URL_LAUNCHER_URL
+        "URL_LAUNCHER_URL": (process.env.URL_LAUNCHER_URL == null) ? "file:////usr/src/app/data/index.html" : process.env.URL_LAUNCHER_URL,
+        "URL_LAUNCHER_ZOOM": (process.env.URL_LAUNCHER_ZOOM == null) ? 1.0 : parseFloat(process.env.URL_LAUNCHER_ZOOM)
     };
 
     let window = null;
@@ -44,7 +45,8 @@
             title: electronConfig.URL_LAUNCHER_TITLE,
             kiosk: electronConfig.URL_LAUNCHER_KIOSK,
             webPreferences: {
-                nodeIntegration: electronConfig.URL_LAUNCHER_NODE
+                nodeIntegration: electronConfig.URL_LAUNCHER_NODE,
+                zoomFactor: electronConfig.URL_LAUNCHER_ZOOM
             }
         });
 
