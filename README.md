@@ -28,8 +28,10 @@ Achieving kinda-smooth desktop application display on a devices like the raspber
 We did a lot of researches and tests with several window managers. [Fluxbox](http://fluxbox.org/) ended up being the most balanced between minimum footprint and features
 
 ### URL LAUNCHER config via ENV VARS
+*__!!! Please note that since `0.1.0` the `bool`-based env vars dropped `true` / `false` strings in favour of `0` / `1` ones. !!!__*
 
-simply set these [environment varables](http://docs.resin.io/#/pages/management/env-vars.md) in your app via the resin dashboard to configure the behaviour of your devices
+simply set these [environment varables](http://docs.resin.io/#/pages/management/env-vars.md) in your app via the resin dashboard to configure the behaviour of your devices.
+*__Please note that the `bool` type definition in the table is meant to accept to either `0` or `1` values.__*
 
 * **`URL_LAUNCHER_URL`** *string* - the URL to be loaded. use `file:///app/app/index.html` to load a local electronJS (or any website) app - *defaults to* `file:///app/app/index.html`
 * **`URL_LAUNCHER_NODE`** *bool* (converted from *string*) - whether or not enable nodejs - *defaults to* `0`
@@ -42,3 +44,4 @@ simply set these [environment varables](http://docs.resin.io/#/pages/management/
 * **`URL_LAUNCHER_TOUCH`** *bool* (converted from *string*) - enables touch events if your device supports them  - *defaults to* `0`
 * **`URL_LAUNCHER_TOUCH_SIMULATE`** *bool* (converted from *string*) - simulates touch events - might be useful for touchscreen with partial driver support - be aware this could be a performance hog  - *defaults to* `0`
 * **`URL_LAUNCHER_ZOOM`** *float* (converted from *string*) - The default zoom factor of the page, 3.0 represents 300%  - *defaults to* `1.0`
+* **`URL_LAUNCHER_OVERLAY_SCROLLBARS`** *bool* (converted from *string*) - enables overlay scrollbars  - *defaults to* `0`
