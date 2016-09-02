@@ -41,11 +41,11 @@
         window = new BrowserWindow({
             width: parseInt(electronConfig.URL_LAUNCHER_WIDTH),
             height: parseInt(electronConfig.URL_LAUNCHER_HEIGHT),
-            frame: electronConfig.URL_LAUNCHER_FRAME,
+            frame: (electronConfig.URL_LAUNCHER_FRAME) ? true : false,
             title: electronConfig.URL_LAUNCHER_TITLE,
-            kiosk: electronConfig.URL_LAUNCHER_KIOSK,
+            kiosk: (electronConfig.URL_LAUNCHER_KIOSK) ? true : false,
             webPreferences: {
-                nodeIntegration: electronConfig.URL_LAUNCHER_NODE,
+                nodeIntegration: (electronConfig.URL_LAUNCHER_NODE) ? true : false,
                 zoomFactor: electronConfig.URL_LAUNCHER_ZOOM
             }
         });
