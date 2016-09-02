@@ -5,14 +5,23 @@ a boilerplate for developing kiosks, digital signage or other human-machine inte
 
 This is the very basic layer on which [snappin.io](http://snappin.io) builds its touch-enabled apps.
 
-### PRE-REQUISITES
-this application is meant to be deployed to [RaspberryPi](https://www.raspberrypi.org/products/) devices via [resin.io](http://resin.io).
+## Getting started
 
-At least 64MB of GPU-dedicated RAM is required. You can achieve that locally following [these instructions](http://docs.resin.io/#/pages/hardware/i2c-and-spi.md#raspberry-pi-camera-module) (only the first parameter `gpu_mem=64` is required) or, __as we strongly suggest__, set it remotely with Resin's [Advanced Boot Configuration](http://docs.resin.io/#/pages/configuration/advanced.md#modifying-config-txt-remotely-) feature.
+- Sign up on [resin.io](https://dashboard.resin.io/signup)
+- go throught the [getting started guide](http://docs.resin.io/raspberrypi/nodejs/getting-started/) and create a new RPI zero application
+- clone this repository to your local workspace
+- add the _resin remote_ to your local workspace using the useful shortcut in the dashboard UI ![remoteadd](https://raw.githubusercontent.com/resin-io-playground/boombeastic/master/docs/gitresinremote.png)
+- `git push resin master`
+- see the magic happening, your device is getting updated Over-The-Air!
+
+## Configure via [environment variables](https://docs.resin.io/management/env-vars/)
+Variable Name | Value | Description | Device-specific
+------------ | ------------- | ------------- | -------------
+RESIN_HOST_CONFIG_gpu_mem | a value from `64` to `160` | the amount of RAM dedicated to the GPU | Raspberry Pi (all revs)
 
 ### WHY THIS TEMPLATE
 
-Achieving kinda-smooth desktop application display on a raspberrypi is hard. This project aims to provide a quickstart template.
+Achieving kinda-smooth desktop application display on a devices like the raspberrypi is hard. This project aims to provide a quickstart template.
 
 ### WHY FLUXBOX
 
