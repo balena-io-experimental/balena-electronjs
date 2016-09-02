@@ -58,10 +58,10 @@ RUN JOBS=MAX npm i --production
 COPY "$SOURCEFOLDER/app" ./
 
 # NPM rebuild node native modules after electron is installed.
-RUN ./app/node_modules/.bin/electron-rebuild
+RUN ./node_modules/.bin/electron-rebuild
 
 ## uncomment if you want systemd
 ENV INITSYSTEM on
 
 # Start app
-CMD ["bash", "/app/start.sh"]
+CMD ["bash", "/usr/src/app/start.sh"]
