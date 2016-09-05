@@ -18,16 +18,25 @@
         "URL_LAUNCHER_CONSOLE": (process.env.URL_LAUNCHER_CONSOLE == null) ? 0 : parseInt(process.env.URL_LAUNCHER_CONSOLE),
         "URL_LAUNCHER_URL": (process.env.URL_LAUNCHER_URL == null) ? "file:////usr/src/app/data/index.html" : process.env.URL_LAUNCHER_URL,
         "URL_LAUNCHER_ZOOM": (process.env.URL_LAUNCHER_ZOOM == null) ? 1.0 : parseFloat(process.env.URL_LAUNCHER_ZOOM),
-        "URL_LAUNCHER_OVERLAY_SCROLLBARS": (process.env.URL_LAUNCHER_OVERLAY_SCROLLBARS == null) ? 0 : parseInt(process.env.URL_LAUNCHER_OVERLAY_SCROLLBARS)
+        "URL_LAUNCHER_OVERLAY_SCROLLBARS": (process.env.URL_LAUNCHER_OVERLAY_SCROLLBARS == null) ? 0 : parseInt(process.env.URL_LAUNCHER_OVERLAY_SCROLLBARS),
+        "URL_LAUNCHER_GETUSERMEDIA_PROMPT": (process.env.URL_LAUNCHER_GETUSERMEDIA_PROMPT == null) ? 0 : parseInt(process.env.URL_LAUNCHER_CONSOLE),
     };
 
     let window = null;
 
+    // allow getUserMedia requests from locally-run apps
+    app.commandLine.appendSwitch("--allow-file-access-from-files");
 
+    // disables permission prompt for getusermedia calls
+    if (!electronConfig.URL_LAUNCHER_GETUSERMEDIA_PROMPT) {
+      app.commandLine.appendSwitch("--use-fake-ui-for-media-stream");
+    }
+    
     // enable touch events if your device supports them
     if (electronConfig.URL_LAUNCHER_TOUCH) {
         app.commandLine.appendSwitch("--touch-devices");
     }
+
     // simulate touch events - might be useful for touchscreen with partial driver support
     if (electronConfig.URL_LAUNCHER_TOUCH_SIMULATE) {
         app.commandLine.appendSwitch("--simulate-touch-screen-with-mouse");
