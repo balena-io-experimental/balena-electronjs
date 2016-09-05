@@ -1,7 +1,7 @@
 {
   "name": "resin-electronjs",
-  "version": "0.0.3",
-  "description": "electronJS-based rpi resin application",
+  "version": "0.1.0",
+  "description": "electronJS-based resin application",
   "main": "main.js",
   "scripts": {
     "start": "NODE_ENV=production startx ./node_modules/electron-prebuilt/dist/electron .",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fwrgit/resin-electronjs.git"
+    "url": "git+https://github.com/resin-io/resin-electronjs.git"
   },
   "keywords": [
     "resin",
@@ -18,15 +18,15 @@
     "js"
   ],
   "dependencies": {
-    "electron-prebuilt": "^1.1.3",
-    "electron-rebuild" :"*"
+    "electron-prebuilt": "^1.3.4",
+    "electron-rebuild" :"^1.2.1"
   },
   "author": "Carlo Maria Curinga",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/fwrgit/resin-electronjs/issues"
+    "url": "https://github.com/resin-io/resin-electronjs/issues"
   },
-  "homepage": "https://github.com/fwrgit/resin-electronjs#readme",
+  "homepage": "https://github.com/resin-io/resin-electronjs#readme",
   "jshintConfig": {
     "esnext": true,
     "strict": true
