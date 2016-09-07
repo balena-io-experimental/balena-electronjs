@@ -7,18 +7,18 @@
 
     // simple parameters initialization
     let electronConfig = {
-        "URL_LAUNCHER_TOUCH": (process.env.URL_LAUNCHER_TOUCH == null) ? 0 : parseInt(process.env.URL_LAUNCHER_TOUCH),
-        "URL_LAUNCHER_TOUCH_SIMULATE": (process.env.URL_LAUNCHER_TOUCH_SIMULATE == null) ? 0 : parseInt(process.env.URL_LAUNCHER_TOUCH_SIMULATE),
-        "URL_LAUNCHER_FRAME": (process.env.URL_LAUNCHER_FRAME == null) ? 0 : parseInt(process.env.URL_LAUNCHER_FRAME),
-        "URL_LAUNCHER_KIOSK": (process.env.URL_LAUNCHER_KIOSK == null) ? 1 : parseInt(process.env.URL_LAUNCHER_KIOSK),
-        "URL_LAUNCHER_NODE": (process.env.URL_LAUNCHER_NODE == null) ? 0 : parseInt(process.env.URL_LAUNCHER_NODE),
+        "URL_LAUNCHER_TOUCH": (process.env.URL_LAUNCHER_TOUCH == null || process.env.URL_LAUNCHER_TOUCH != '0' || process.env.URL_LAUNCHER_TOUCH != '1') ? 0 : parseInt(process.env.URL_LAUNCHER_TOUCH),
+        "URL_LAUNCHER_TOUCH_SIMULATE": (process.env.URL_LAUNCHER_TOUCH_SIMULATE == null || process.env.URL_LAUNCHER_TOUCH_SIMULATE != '0' || process.env.URL_LAUNCHER_TOUCH_SIMULATE != '1') ? 0 : parseInt(process.env.URL_LAUNCHER_TOUCH_SIMULATE),
+        "URL_LAUNCHER_FRAME": (process.env.URL_LAUNCHER_FRAME == null || process.env.URL_LAUNCHER_FRAME != '0' || process.env.URL_LAUNCHER_FRAME != '1') ? 0 : parseInt(process.env.URL_LAUNCHER_FRAME),
+        "URL_LAUNCHER_KIOSK": (process.env.URL_LAUNCHER_KIOSK == null || process.env.URL_LAUNCHER_KIOSK != '0' || process.env.URL_LAUNCHER_KIOSK != '1') ? 1 : parseInt(process.env.URL_LAUNCHER_KIOSK),
+        "URL_LAUNCHER_NODE": (process.env.URL_LAUNCHER_NODE == null || process.env.URL_LAUNCHER_NODE != '0' || process.env.URL_LAUNCHER_NODE != '1') ? 0 : parseInt(process.env.URL_LAUNCHER_NODE),
         "URL_LAUNCHER_WIDTH": (process.env.URL_LAUNCHER_WIDTH == null) ? 1920 : parseInt(process.env.URL_LAUNCHER_WIDTH),
         "URL_LAUNCHER_HEIGHT": (process.env.URL_LAUNCHER_HEIGHT == null) ? 1080 : parseInt(process.env.URL_LAUNCHER_HEIGHT),
         "URL_LAUNCHER_TITLE": (process.env.URL_LAUNCHER_TITLE == null) ? "RESIN.IO" : process.env.URL_LAUNCHER_TITLE,
-        "URL_LAUNCHER_CONSOLE": (process.env.URL_LAUNCHER_CONSOLE == null) ? 0 : parseInt(process.env.URL_LAUNCHER_CONSOLE),
+        "URL_LAUNCHER_CONSOLE": (process.env.URL_LAUNCHER_CONSOLE == null || process.env.URL_LAUNCHER_CONSOLE != '0' || process.env.URL_LAUNCHER_CONSOLE != '1') ? 0 : parseInt(process.env.URL_LAUNCHER_CONSOLE),
         "URL_LAUNCHER_URL": (process.env.URL_LAUNCHER_URL == null) ? "file:////usr/src/app/data/index.html" : process.env.URL_LAUNCHER_URL,
         "URL_LAUNCHER_ZOOM": (process.env.URL_LAUNCHER_ZOOM == null) ? 1.0 : parseFloat(process.env.URL_LAUNCHER_ZOOM),
-        "URL_LAUNCHER_OVERLAY_SCROLLBARS": (process.env.URL_LAUNCHER_OVERLAY_SCROLLBARS == null) ? 0 : parseInt(process.env.URL_LAUNCHER_OVERLAY_SCROLLBARS)
+        "URL_LAUNCHER_OVERLAY_SCROLLBARS": (process.env.URL_LAUNCHER_OVERLAY_SCROLLBARS == null || process.env.URL_LAUNCHER_OVERLAY_SCROLLBARS != '0' || process.env.URL_LAUNCHER_OVERLAY_SCROLLBARS != '1') ? 0 : parseInt(process.env.URL_LAUNCHER_OVERLAY_SCROLLBARS)
     };
 
     let window = null;
