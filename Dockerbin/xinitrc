@@ -34,7 +34,7 @@ if [ -f "$HOME/.xinitrc" ]; then
 		# shell script but something else
 		exec $XINITRC -nocursor -nolisten tcp "$@"
 	else
-		exec /bin/sh "$HOME/.xinitrc" -nocursor -nolisten tcp "$@"
+		exec /bin/bash "$HOME/.xinitrc" -nocursor -nolisten tcp "$@"
 	fi
 fi
 exec startfluxbox
