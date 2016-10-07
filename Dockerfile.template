@@ -22,6 +22,9 @@ RUN apk add --update \
 # Save source folder
 RUN printf "%s\n" "${PWD##}" > SOURCEFOLDER
 
+# Move to app dir
+WORKDIR /usr/src/app
+
 # Set Xorg and FLUXBOX preferences
 RUN mkdir ~/.fluxbox
 RUN echo "xset s off\nxserver-command=X -s 0 dpms" > ~/.fluxbox/startup
