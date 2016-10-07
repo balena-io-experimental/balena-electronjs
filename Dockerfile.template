@@ -13,8 +13,6 @@ RUN apk add --update \
         udev \
         xf86-video-fbdev \
         fluxbox \
-        omxplayer \
-        && pip install --upgrade pip \
         && rm -rf /var/cache/apk/*
 
 # Save source folder
