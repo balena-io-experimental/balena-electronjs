@@ -30,14 +30,14 @@ RUN mkdir ~/.fluxbox
 RUN echo "xset s off\nxserver-command=X -s 0 dpms" > ~/.fluxbox/startup
 COPY "$SOURCEFOLDER/Dockerbin/xinitrc" /etc/X11/xinit/xinitrc
 
-# Set npm
-RUN npm config set unsafe-perm true
+# Set npm & bower
+RUN npm config set unsafe-perm true && JOBS=MAX npm i bower -g && npm cache clean
 
 # Move package.json to filesystem
 COPY "$SOURCEFOLDER/app/package.json" ./
 
 # NPM i app
-RUN JOBS=MAX npm i --production
+RUN JOBS=MAX npm i --production && npm cache clean
 
 # Move app to filesystem
 COPY "$SOURCEFOLDER/app" ./
