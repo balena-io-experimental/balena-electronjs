@@ -5,6 +5,9 @@ RUN apk add --update \
         --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ \
         build-base \
         git \
+        python \
+        python-dev \
+        py-pip \
         xorg-server \
         xf86-video-vesa \
         xf86-input-evdev \
@@ -13,6 +16,7 @@ RUN apk add --update \
         udev \
         xf86-video-fbdev \
         fluxbox \
+        && pip install --upgrade pip \
         && rm -rf /var/cache/apk/*
 
 # Save source folder
