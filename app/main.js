@@ -1,6 +1,6 @@
 {
     'use strict';
-
+    require('require-rebuild')();
     const electron = require('electron');
     const app = electron.app;
     const BrowserWindow = electron.BrowserWindow;
