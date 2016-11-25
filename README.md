@@ -1,9 +1,6 @@
-![resin.io + electronJS = love](http://snappin.io/img/resin_electron_love.png)
 # resin-electronjs
 
 a boilerplate for developing kiosks, digital signage or other human-machine interaction projects based on [ElectronJS](http://electron.atom.io/) and [resin.io](http://resin.io)
-
-This is the very basic layer on which [snappin.io](http://snappin.io) builds its touch-enabled apps.
 
 ## Getting started
 
