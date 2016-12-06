@@ -9,18 +9,16 @@ RUN dnf install --verbose -yq \
   kernel-devel \
   clang \
   wget \
-  xorg-x11-xinit \
-  xorg-x11-drv-evdev \
-  xorg-x11-drv-fbdev \
-  xorg-x11-drv-libinput \
-  xorg-x11-drv-armsoc \
-  xorg-x11-drv-fbturbo \
-  xorg-x11-server-utils \
-  xorg-x11-font-utils \
-  xorg-x11-drivers \
-  xorg-x11-drv-synaptics \
-  libXScrnSaver \
-  mesa-dri-drivers \
+  Xorg \
+  libX11-devel \
+  libXt-devel \
+  libXext-devel \
+  xorg-x11-* \
+  xorg-x11-xinit-* \
+  xorg-x11-drv-evdev.armv7hl \
+  xinit \
+  mesa* \
+  fluxbox \
   alsa-lib \
   dbus-devel \
   dbus-libs \
@@ -28,17 +26,14 @@ RUN dnf install --verbose -yq \
   gnome-keyring \
   GConf2-devel \
   nss-devel \
-  fluxbox \
   libsmbclient \
   fbset \
   expat-devel && dnf clean all
 
 # Set Xorg and FLUXBOX preferences
 RUN mkdir ~/.fluxbox
-RUN echo "xset s off" > ~/.fluxbox/startup && echo "xserver-command=X -s 0 dpms" >> ~/.fluxbox/startup
-RUN echo "#!/bin/bash" > /etc/X11/xinit/xserverrc \
-  && echo "" >> /etc/X11/xinit/xserverrc \
-  && echo 'exec /usr/bin/X -s 0 dpms -nocursor -nolisten tcp "$@"' >> /etc/X11/xinit/xserverrc
+RUN echo "xset s off" > /root/.fluxbox/startup && echo "xserver-command=X -s 0 dpms -nocursor" >> ~/.fluxbox/startup
+RUN echo "exec /usr/bin/startfluxbox" > /root/.xinitrc \
 
 # Set npm
 RUN npm config set unsafe-perm true
