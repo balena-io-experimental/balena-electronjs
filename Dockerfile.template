@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
   curl && rm -rf /var/lib/apt/lists/*
 
 # WTF is going on with httpredir from debian? removing it the dirty way
-RUN sed -i "s/httpredir.debian.org/`curl -s -D - http://httpredir.debian.org/demo/debian/ | awk '/^Link:/ { print $2 }' | sed -e 's@<http://\(.*\)/debian/>;@\1@g'`/" /etc/apt/sources.list
+RUN sed -i "s!httpredir.debian.org!`curl -s -D - http://httpredir.debian.org/demo/debian/ | awk '/^Link:/ { print $2 }' | sed -e 's@<http://\(.*\)/debian/>;@\1@g'`!" /etc/apt/sources.list
 
 # Install other apt deps
 RUN apt-get update && apt-get install -y \
