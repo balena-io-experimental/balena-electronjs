@@ -1,17 +1,11 @@
-FROM resin/%%RESIN_MACHINE_NAME%%-node:slim
+FROM resin/%%RESIN_MACHINE_NAME%%-node:6.9.2
 
-# Install wget and curl
-RUN apt-get update && apt-get install -y \
-  wget \
-  curl && rm -rf /var/lib/apt/lists/*
-
-# WTF is going on with httpredir from debian? removing it the dirty way
-RUN sed -i "s/httpredir.debian.org/`curl -s -D - http://httpredir.debian.org/demo/debian/ | awk '/^Link:/ { print $2 }' | sed -e 's@<http://\(.*\)/debian/>;@\1@g'`/" /etc/apt/sources.list
+# debian httpredir mirror proxy often ends up with 404s - editing source file to avoid it
+RUN sed -i "s!httpredir.debian.org!`curl -s -D - http://httpredir.debian.org/demo/debian/ | awk '/^Link:/ { print $2 }' | sed -e 's@<http://\(.*\)/debian/>;@\1@g'`!" /etc/apt/sources.list
 
 # Install other apt deps
 RUN apt-get update && apt-get install -y \
   apt-utils \
-  build-essential \
   clang \
   xserver-xorg-core \
   xserver-xorg-input-all \
@@ -36,11 +30,10 @@ RUN apt-get update && apt-get install -y \
 
 # Set Xorg and FLUXBOX preferences
 RUN mkdir ~/.fluxbox
-RUN echo "xset s off\nxserver-command=X -s 0 dpms" > ~/.fluxbox/startup
-RUN echo '#!/bin/sh\n\nexec /usr/bin/X -s 0 dpms -nocursor -nolisten tcp "$@"' > /etc/X11/xinit/xserverrc
-
-# Set npm
-RUN npm config set unsafe-perm true
+RUN echo "xset s off" > ~/.fluxbox/startup && echo "xserver-command=X -s 0 dpms" >> ~/.fluxbox/startup
+RUN echo "#!/bin/bash" > /etc/X11/xinit/xserverrc \
+  && echo "" >> /etc/X11/xinit/xserverrc \
+  && echo 'exec /usr/bin/X -s 0 dpms -nocursor -nolisten tcp "$@"' >> /etc/X11/xinit/xserverrc
 
 # Save source folder
 RUN printf "%s\n" "${PWD##}" > SOURCEFOLDER
@@ -51,14 +44,12 @@ WORKDIR /usr/src/app
 # Move package.json to filesystem
 COPY "$SOURCEFOLDER/app/package.json" ./
 
-# NPM i app
-RUN JOBS=MAX npm i --production
+# Install npm modules for the application
+RUN JOBS=MAX npm install --unsafe-perm --production \
+	&& npm cache clean
 
 # Move app to filesystem
 COPY "$SOURCEFOLDER/app" ./
-
-# NPM rebuild node native modules after electron is installed.
-RUN ./node_modules/.bin/electron-rebuild
 
 ## uncomment if you want systemd
 ENV INITSYSTEM on
