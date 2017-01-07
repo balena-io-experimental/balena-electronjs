@@ -1,6 +1,6 @@
+#!/bin/env node
 {
-    'use strict';
-
+    require('require-rebuild')();
     const electron = require('electron');
     const app = electron.app;
     const BrowserWindow = electron.BrowserWindow;
@@ -39,7 +39,7 @@
       we initialize our application display as a callback of the electronJS "ready" event
     */
     app.on('ready', () => {
-
+        'use strict';
         // here we actually configure the behavour of electronJS
         window = new BrowserWindow({
             width: parseInt(electronConfig.URL_LAUNCHER_WIDTH),
