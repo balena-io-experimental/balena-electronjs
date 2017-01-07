@@ -1,9 +1,6 @@
-![resin.io + electronJS = love](http://snappin.io/img/resin_electron_love.png)
 # resin-electronjs
 
 a boilerplate for developing kiosks, digital signage or other human-machine interaction projects based on [ElectronJS](http://electron.atom.io/) and [resin.io](http://resin.io)
-
-This is the very basic layer on which [snappin.io](http://snappin.io) builds its touch-enabled apps.
 
 ## Getting started
 
@@ -17,7 +14,10 @@ This is the very basic layer on which [snappin.io](http://snappin.io) builds its
 ## Configure via [environment variables](https://docs.resin.io/management/env-vars/)
 Variable Name | Value | Description | Device-specific
 ------------ | ------------- | ------------- | -------------
-RESIN_HOST_CONFIG_gpu_mem | a value from `64` to `160` | the amount of RAM dedicated to the GPU | Raspberry Pi (all revs)
+**`RESIN_HOST_CONFIG_gpu_mem`** | a value from `64` to `160` | the amount of RAM dedicated to the GPU | Raspberry Pi (all revs)
+
+Apply the above settings in the "Fleet Configuration" panel (if applying it for the all devices withing your application), or "Device Configuration" panel (if applying it for a single device).
+
 
 ### WHY THIS TEMPLATE
 
@@ -30,7 +30,7 @@ We did a lot of researches and tests with several window managers. [Fluxbox](htt
 ### URL LAUNCHER config via ENV VARS
 *__!!! Please note that since `0.1.0` the `bool`-based env vars dropped `true` / `false` strings in favour of `0` / `1` ones. !!!__*
 
-simply set these [environment varables](http://docs.resin.io/#/pages/management/env-vars.md) in your app via the resin dashboard to configure the behaviour of your devices.
+simply set these [environment varables](http://docs.resin.io/#/pages/management/env-vars.md) in your app via "Environment Variables" panel in the resin dashboard to configure the behaviour of your devices.
 *__Please note that the `bool` type definition in the table is meant to accept to either `0` or `1` values.__*
 
 * **`URL_LAUNCHER_URL`** *string* - the URL to be loaded. use `file:////usr/src/app/data/index.html` to load a local electronJS (or any website) app - *defaults to* `file:////usr/src/app/data/index.html`
