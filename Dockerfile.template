@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
   apt-utils \
   clang \
   xserver-xorg-core \
-  xserver-xorg-input-all \
+  xserver-xorg-input-all=1:7.7+7+b1 \
   xserver-xorg-video-fbdev \
   xorg \
   libdbus-1-dev \
