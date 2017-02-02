@@ -1,4 +1,4 @@
-FROM resin/%%RESIN_MACHINE_NAME%%-node:6.9.2
+FROM resin/%%RESIN_MACHINE_NAME%%-node:6.9
 
 # debian httpredir mirror proxy often ends up with 404s - editing source file to avoid it
 RUN sed -i "s!httpredir.debian.org!`curl -s -D - http://httpredir.debian.org/demo/debian/ | awk '/^Link:/ { print $2 }' | sed -e 's@<http://\(.*\)/debian/>;@\1@g'`!" /etc/apt/sources.list
@@ -37,21 +37,18 @@ RUN echo "#!/bin/bash" > /etc/X11/xinit/xserverrc \
   && echo "" >> /etc/X11/xinit/xserverrc \
   && echo 'exec /usr/bin/X -s 0 dpms -nocursor -nolisten tcp "$@"' >> /etc/X11/xinit/xserverrc
 
-# Save source folder
-RUN printf "%s\n" "${PWD##}" > SOURCEFOLDER
-
 # Move to app dir
 WORKDIR /usr/src/app
 
 # Move package.json to filesystem
-COPY "$SOURCEFOLDER/app/package.json" ./
+COPY ./app/package.json ./
 
 # Install npm modules for the application
 RUN JOBS=MAX npm install --unsafe-perm --production \
-	&& npm cache clean
+	&& npm cache clean &&
 
 # Move app to filesystem
-COPY "$SOURCEFOLDER/app" ./
+COPY ./app ./
 
 ## uncomment if you want systemd
 ENV INITSYSTEM on
