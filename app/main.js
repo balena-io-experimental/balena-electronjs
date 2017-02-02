@@ -1,5 +1,6 @@
 require('require-rebuild')();
 const electron = require('electron');
+const path = require('path');
 
 const { app, BrowserWindow } = electron;
 
@@ -26,6 +27,18 @@ if (electronConfig.URL_LAUNCHER_TOUCH) {
 // simulate touch events - might be useful for touchscreen with partial driver support
 if (electronConfig.URL_LAUNCHER_TOUCH_SIMULATE) {
   app.commandLine.appendSwitch('--simulate-touch-screen-with-mouse');
+}
+
+if (process.env.NODE_ENV === 'development') {
+  console.log('Running in development mode');
+  Object.assign(electronConfig, {
+    URL_LAUNCHER_URL: `file:///${path.join(__dirname, 'data', 'index.html')}`,
+    URL_LAUNCHER_HEIGHT: 600,
+    URL_LAUNCHER_WIDTH: 800,
+    URL_LAUNCHER_KIOSK: 0,
+    URL_LAUNCHER_CONSOLE: 1,
+    URL_LAUNCHER_FRAME: 1,
+  });
 }
 
 /*
