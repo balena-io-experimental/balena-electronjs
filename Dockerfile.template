@@ -45,7 +45,7 @@ COPY ./app/package.json ./
 
 # Install npm modules for the application
 RUN JOBS=MAX npm install --unsafe-perm --production \
-	&& npm cache clean &&
+	&& npm cache clean && node_modules/.bin/electron-rebuild
 
 # Move app to filesystem
 COPY ./app ./
