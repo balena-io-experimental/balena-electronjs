@@ -1,3 +1,5 @@
+**This is a react.js fork of resin-electronjs**
+
 # resin-electronjs
 
 a boilerplate for developing kiosks, digital signage or other human-machine interaction projects based on [ElectronJS](http://electron.atom.io/) and [resin.io](http://resin.io)

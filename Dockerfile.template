@@ -50,6 +50,9 @@ COPY "$SOURCEFOLDER/app/package.json" ./
 RUN JOBS=MAX npm install --unsafe-perm --production \
 	&& npm cache clean
 
+# Build react app
+RUN JOBS=MAX npm run build
+
 # Move app to filesystem
 COPY "$SOURCEFOLDER/app" ./
 
