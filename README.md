@@ -1,3 +1,9 @@
+**This is a react.js fork of resin-electronjs**
+
+It uses [create-react-app](https://github.com/facebookincubator/create-react-app) to handle the configuration and provide a simple starting point for resin.io + electron + react projects.
+
+![screenshot](screenshot.png)
+
 # resin-electronjs
 
 a boilerplate for developing kiosks, digital signage or other human-machine interaction projects based on [ElectronJS](http://electron.atom.io/) and [resin.io](http://resin.io)
