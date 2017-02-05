@@ -5,7 +5,7 @@ a boilerplate for developing kiosks, digital signage or other human-machine inte
 ## Getting started
 
 - Sign up on [resin.io](https://dashboard.resin.io/signup)
-- go throught the [getting started guide](http://docs.resin.io/raspberrypi/nodejs/getting-started/) and create a new RPI zero application
+- go throught the [getting started guide](http://docs.resin.io/raspberrypi/nodejs/getting-started/) and create a new application
 - clone this repository to your local workspace
 - add the _resin remote_ to your local workspace using the useful shortcut in the dashboard UI ![remoteadd](https://raw.githubusercontent.com/resin-io-playground/boombeastic/master/docs/gitresinremote.png)
 - `git push resin master`
