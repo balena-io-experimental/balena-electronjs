@@ -14,7 +14,7 @@ const electronConfig = {
   URL_LAUNCHER_HEIGHT: parseInt(process.env.URL_LAUNCHER_HEIGHT || 1080, 10),
   URL_LAUNCHER_TITLE: process.env.URL_LAUNCHER_TITLE || 'RESIN.IO',
   URL_LAUNCHER_CONSOLE: process.env.URL_LAUNCHER_CONSOLE === '1' ? 1 : 0,
-  URL_LAUNCHER_URL: process.env.URL_LAUNCHER_URL || 'file:////usr/src/app/data/index.html',
+  URL_LAUNCHER_URL: process.env.URL_LAUNCHER_URL || `file:///${path.join(__dirname, 'data', 'index.html')}`,
   URL_LAUNCHER_ZOOM: parseFloat(process.env.URL_LAUNCHER_ZOOM || 1.0),
   URL_LAUNCHER_OVERLAY_SCROLLBARS: process.env.URL_LAUNCHER_CONSOLE === '1' ? 1 : 0,
 };
@@ -31,7 +31,6 @@ if (electronConfig.URL_LAUNCHER_TOUCH_SIMULATE) {
 if (process.env.NODE_ENV === 'development') {
   console.log('Running in development mode');
   Object.assign(electronConfig, {
-    URL_LAUNCHER_URL: `file:///${path.join(__dirname, 'data', 'index.html')}`,
     URL_LAUNCHER_HEIGHT: 600,
     URL_LAUNCHER_WIDTH: 800,
     URL_LAUNCHER_KIOSK: 0,
