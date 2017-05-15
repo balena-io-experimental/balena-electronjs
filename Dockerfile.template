@@ -1,9 +1,4 @@
-FROM resin/%%RESIN_MACHINE_NAME%%-node:6.9
-
-# debian httpredir mirror proxy often ends up with 404s - editing source file to avoid it
-RUN sed -i "s!httpredir.debian.org!`curl -s -D - http://httpredir.debian.org/demo/debian/ | awk '/^Link:/ { print $2 }' | sed -e 's@<http://\(.*\)/debian/>;@\1@g'`!" /etc/apt/sources.list
-
-COPY debian-pinning /etc/apt/preferences.d/
+FROM resin/%%RESIN_MACHINE_NAME%%-node:6
 
 # Install other apt deps
 RUN apt-get update && apt-get install -y \
