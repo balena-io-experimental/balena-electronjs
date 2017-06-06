@@ -8,6 +8,26 @@ RUN apt-get update && apt-get install -y \
   xserver-xorg-input-all \
   xserver-xorg-video-fbdev \
   xorg \
+  libegl1-mesa \
+  libegl1-mesa-drivers \
+  libgl1-mesa-dri \
+  libgl1-mesa-glx \
+  libglapi-mesa \
+  libgles1-mesa \
+  libgles2-mesa \
+  libglu1-mesa \
+  libopenvg1-mesa \
+  libdbus-1-dev \
+  libgtk2.0-dev \
+  libnotify-dev \
+  libtxc-dxtn-s2tc0 \
+  xserver-xorg-video-intel \
+  mesa-utils \
+  mesa-utils-extra \
+  libva-drm1 \
+  libgl1-mesa-dev \
+  libglu1-mesa-dev \
+  freeglut3-dev \
   libdbus-1-dev \
   libgtk2.0-dev \
   libnotify-dev \
