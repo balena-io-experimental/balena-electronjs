@@ -1,52 +1,41 @@
-FROM resin/%%RESIN_MACHINE_NAME%%-node:6
+FROM resin/%%RESIN_MACHINE_NAME%%-debian:stretch
 
-# Install other apt deps
-RUN apt-get update && apt-get install -y \
-  apt-utils \
-  clang \
-  xserver-xorg-core \
-  xserver-xorg-input-all \
-  xserver-xorg-video-fbdev \
-  xorg \
-  libdbus-1-dev \
-  libgtk2.0-dev \
-  libnotify-dev \
-  libgnome-keyring-dev \
-  libgconf2-dev \
-  libasound2-dev \
-  libcap-dev \
-  libcups2-dev \
-  libxtst-dev \
-  libxss1 \
-  libnss3-dev \
-  fluxbox \
-  libsmbclient \
-  libssh-4 \
-  fbset \
-  libexpat-dev && rm -rf /var/lib/apt/lists/*
+RUN apt-get update \
+	&& apt-get install \
+		dbus \
+		libasound2 \
+		libgconf-2-4 \
+		libgtk2.0-0 \
+		libinput10 \
+		libnss3 \
+		libxss1 \
+		libxtst6 \
+		udev \
+		xinit \
+		xserver-xorg-core \
+		xserver-xorg-input-libinput \
+		xserver-xorg-video-fbdev \
+		xserver-xorg-video-vesa \
+	&& rm -rf /var/lib/apt/lists/*
 
-# Set Xorg and FLUXBOX preferences
-RUN mkdir ~/.fluxbox
-RUN echo "xset s off" > ~/.fluxbox/startup && echo "xserver-command=X -s 0 dpms" >> ~/.fluxbox/startup
-RUN echo "#!/bin/bash" > /etc/X11/xinit/xserverrc \
-  && echo "" >> /etc/X11/xinit/xserverrc \
-  && echo 'exec /usr/bin/X -s 0 dpms -nocursor -nolisten tcp "$@"' >> /etc/X11/xinit/xserverrc
+ENV NODE_VERSION 8.0.0
+
+RUN curl -SLO "http://resin-packages.s3.amazonaws.com/node/v$NODE_VERSION/node-v$NODE_VERSION-linux-armv7hf.tar.gz" \
+	&& echo "fd3633733b4fc82b97a1a87c4fb67b1b7a3654fb9f65e2b96dbbba29f97c629f  node-v8.0.0-linux-armv7hf.tar.gz" | sha256sum -c - \
+	&& tar -xzf "node-v$NODE_VERSION-linux-armv7hf.tar.gz" -C /usr/local --strip-components=1 \
+	&& rm "node-v$NODE_VERSION-linux-armv7hf.tar.gz" \
+	&& npm config set unsafe-perm true -g --unsafe-perm \
+	&& rm -rf /tmp/*
+
+RUN npm install -g electron
 
 # Move to app dir
 WORKDIR /usr/src/app
-
-# Move package.json to filesystem
-COPY ./app/package.json ./
-
-# Install npm modules for the application
-RUN JOBS=MAX npm install --unsafe-perm --production \
-	&& npm cache clean && node_modules/.bin/electron-rebuild
 
 # Move app to filesystem
 COPY ./app ./
 
 ## uncomment if you want systemd
-ENV INITSYSTEM on
+# ENV INITSYSTEM on
 
-# Start app
-CMD ["bash", "/usr/src/app/start.sh"]
+CMD [ "startx", "/usr/local/bin/electron", "https://resin.io", "--enable-logging" ]
