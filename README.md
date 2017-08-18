@@ -45,3 +45,8 @@ simply set these [environment varables](http://docs.resin.io/#/pages/management/
 * **`URL_LAUNCHER_TOUCH_SIMULATE`** *bool* (converted from *string*) - simulates touch events - might be useful for touchscreen with partial driver support - be aware this could be a performance hog  - *defaults to* `0`
 * **`URL_LAUNCHER_ZOOM`** *float* (converted from *string*) - The default zoom factor of the page, 3.0 represents 300%  - *defaults to* `1.0`
 * **`URL_LAUNCHER_OVERLAY_SCROLLBARS`** *bool* (converted from *string*) - enables overlay scrollbars  - *defaults to* `0`
+
+### Related
+
+- [resin-electronjs vue boilerplate](https://github.com/imomaliev/resin-electron-vue) by [@imomaliev](https://github.com/imomaliev)
+- [resin-electronjs react boilerplate](https://github.com/resin-io-playground/resin-electronjs-react) by [@craig-mulligan](https://github.com/craig-mulligan)
