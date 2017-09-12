@@ -2,6 +2,8 @@
 
 It uses [create-react-app](https://github.com/facebookincubator/create-react-app) to handle the configuration and provide a simple starting point for resin.io + electron + react projects.
 
+This fork is preconfigured to run the node launcher, so `URL_LAUNCHER_NODE` is always set to `1`.
+
 ![screenshot](screenshot.png)
 
 # resin-electronjs

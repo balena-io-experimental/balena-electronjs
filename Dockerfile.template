@@ -39,14 +39,15 @@ WORKDIR /usr/src/app
 COPY ./app/package.json ./
 
 # Install npm modules for the application
-RUN JOBS=MAX npm install --unsafe-perm --production \
+# Install dev deps so we can build app
+RUN JOBS=MAX npm install --unsafe-perm \
 	&& npm cache clean && node_modules/.bin/electron-rebuild
-
-# Build react app
-RUN JOBS=MAX npm run build
 
 # Move app to filesystem
 COPY ./app ./
+
+# Build react app
+RUN JOBS=MAX npm run build
 
 ## uncomment if you want systemd
 ENV INITSYSTEM on
