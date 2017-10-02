@@ -1,7 +1,8 @@
 FROM resin/%%RESIN_MACHINE_NAME%%-node:6
 
 # Install other apt deps
-RUN apt-get update && apt-get install -y \
+RUN echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list && \
+  apt-get update && apt-get install -t jessie-backports -y \
   apt-utils \
   clang \
   xserver-xorg-core \
