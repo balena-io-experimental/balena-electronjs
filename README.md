@@ -45,6 +45,7 @@ simply set these [environment varables](http://docs.resin.io/#/pages/management/
 * **`URL_LAUNCHER_TOUCH_SIMULATE`** *bool* (converted from *string*) - simulates touch events - might be useful for touchscreen with partial driver support - be aware this could be a performance hog  - *defaults to* `0`
 * **`URL_LAUNCHER_ZOOM`** *float* (converted from *string*) - The default zoom factor of the page, 3.0 represents 300%  - *defaults to* `1.0`
 * **`URL_LAUNCHER_OVERLAY_SCROLLBARS`** *bool* (converted from *string*) - enables overlay scrollbars  - *defaults to* `0`
+* **`TIMEZONE`** *string* - the timezone to use. Examples: `Europe/Berlin` or `America/Los_Angeles` - *defaults to* `UTC`
 
 ### Related
 
