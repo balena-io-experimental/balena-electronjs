@@ -15,6 +15,7 @@ a boilerplate for developing kiosks, digital signage or other human-machine inte
 Variable Name | Value | Description | Device-specific
 ------------ | ------------- | ------------- | -------------
 **`RESIN_HOST_CONFIG_gpu_mem`** | a value from `64` to `160` | the amount of RAM dedicated to the GPU | Raspberry Pi (all revs)
+**`FRAMEBUFFER`** | framebuffer device (e.g. /dev/fb1) | configure X Server to use the correct framebuffer device (e.g. when using a PiTFT display) | Raspberry Pi (all revs) 
 
 Apply the above settings in the "Fleet Configuration" panel (if applying it for the all devices withing your application), or "Device Configuration" panel (if applying it for a single device).
 
