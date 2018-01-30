@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development electron .",
     "lint": "eslint .",
-    "start": "criss-env NODE_ENV=production startx ./node_modules/electron/dist/electron ."
+    "start": "cross-env NODE_ENV=production startx ./node_modules/electron/dist/electron ."
   },
   "repository": {
     "type": "git",
