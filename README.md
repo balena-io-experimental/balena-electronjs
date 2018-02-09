@@ -23,10 +23,6 @@ Apply the above settings in the "Fleet Configuration" panel (if applying it for 
 
 Achieving kinda-smooth desktop application display on a devices like the raspberrypi is hard. This project aims to provide a quickstart template.
 
-### WHY FLUXBOX
-
-We did a lot of researches and tests with several window managers. [Fluxbox](http://fluxbox.org/) ended up being the most balanced between minimum footprint and features
-
 ### URL LAUNCHER config via ENV VARS
 *__!!! Please note that since `0.1.0` the `bool`-based env vars dropped `true` / `false` strings in favour of `0` / `1` ones. !!!__*
 
