@@ -1,7 +1,10 @@
 const electron = require('electron');
 const path = require('path');
 
-const { app, BrowserWindow } = electron;
+const {
+  app,
+  BrowserWindow
+} = electron;
 
 // simple parameters initialization
 const electronConfig = {
@@ -70,7 +73,9 @@ app.on('ready', () => {
   if (electronConfig.URL_LAUNCHER_CONSOLE) {
     window.openDevTools();
   }
-
+  process.on('uncaughtException', function(err) {
+    console.log(err);
+  });
   // the big red button, here we go
   window.loadURL(electronConfig.URL_LAUNCHER_URL);
 });
