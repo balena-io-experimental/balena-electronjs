@@ -43,6 +43,7 @@ if (process.env.NODE_ENV === 'development') {
  we initialize our application display as a callback of the electronJS "ready" event
  */
 app.on('ready', () => {
+  'use strict';
   // here we actually configure the behavour of electronJS
   const window = new BrowserWindow({
     width: electronConfig.URL_LAUNCHER_WIDTH,
