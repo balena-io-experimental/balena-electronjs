@@ -1,13 +1,16 @@
 FROM resin/%%RESIN_MACHINE_NAME%%-node:8
 
 # Install other apt deps
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
   apt-utils \
   clang \
   xserver-xorg-core \
   xserver-xorg-input-all \
   xserver-xorg-video-fbdev \
   xorg \
+  libxcb-image0 \
+  libxcb-util0 \
+  xdg-utils \
   libdbus-1-dev \
   libgtk2.0-dev \
   libnotify-dev \
@@ -25,13 +28,6 @@ RUN apt-get update && apt-get install -y \
   fbset \
   libexpat-dev && rm -rf /var/lib/apt/lists/*
 
-# Set Xorg and FLUXBOX preferences
-RUN mkdir ~/.fluxbox
-RUN echo "xset s off" > ~/.fluxbox/startup && echo "xserver-command=X -s 0 dpms" >> ~/.fluxbox/startup
-RUN echo "#!/bin/bash" > /etc/X11/xinit/xserverrc \
-  && echo "" >> /etc/X11/xinit/xserverrc \
-  && echo 'exec /usr/bin/X -s 0 dpms -nocursor -nolisten tcp "$@"' >> /etc/X11/xinit/xserverrc
-
 # Move to app dir
 WORKDIR /usr/src/app
 
@@ -40,7 +36,7 @@ COPY ./app/package.json ./
 
 # Install npm modules for the application
 RUN JOBS=MAX npm install --unsafe-perm --production && npm cache clean --force && \
-  rm -rf /tmp/* && node_modules/.bin/electron-rebuild
+  rm -rf /tmp/* 
 
 # Move app to filesystem
 COPY ./app ./
