@@ -22,7 +22,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   libxtst-dev \
   libxss1 \
   libnss3-dev \
-  fluxbox \
   libsmbclient \
   libssh-4 \
   fbset \
@@ -36,7 +35,7 @@ COPY ./app/package.json ./
 
 # Install npm modules for the application
 RUN JOBS=MAX npm install --unsafe-perm --production && npm cache clean --force && \
-  rm -rf /tmp/* 
+  rm -rf /tmp/*
 
 # Move app to filesystem
 COPY ./app ./
