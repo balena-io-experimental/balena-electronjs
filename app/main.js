@@ -1,5 +1,9 @@
 const electron = require('electron');
 const path = require('path');
+const url = require('url');
+// Keep a global reference of the window object, if you don't, the window will
+// be closed automatically when the JavaScript object is garbage collected.
+let mainWindow;
 
 const {
   app,
@@ -71,7 +75,7 @@ app.on('ready', () => {
   // if the env-var is set to true,
   // a portion of the screen will be dedicated to the chrome-dev-tools
   if (electronConfig.URL_LAUNCHER_CONSOLE) {
-    window.openDevTools();
+    window.webContents.openDevTools();
   }
   process.on('uncaughtException', function(err) {
     console.log(err);
