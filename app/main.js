@@ -1,7 +1,14 @@
 const electron = require('electron');
 const path = require('path');
+const url = require('url');
+// Keep a global reference of the window object, if you don't, the window will
+// be closed automatically when the JavaScript object is garbage collected.
+let mainWindow;
 
-const { app, BrowserWindow } = electron;
+const {
+  app,
+  BrowserWindow
+} = electron;
 
 // simple parameters initialization
 const electronConfig = {
@@ -18,7 +25,7 @@ const electronConfig = {
   URL_LAUNCHER_ZOOM: parseFloat(process.env.URL_LAUNCHER_ZOOM || 1.0),
   URL_LAUNCHER_OVERLAY_SCROLLBARS: process.env.URL_LAUNCHER_CONSOLE === '1' ? 1 : 0,
 };
-
+app.disableHardwareAcceleration();
 // enable touch events if your device supports them
 if (electronConfig.URL_LAUNCHER_TOUCH) {
   app.commandLine.appendSwitch('--touch-devices');
@@ -43,6 +50,7 @@ if (process.env.NODE_ENV === 'development') {
  we initialize our application display as a callback of the electronJS "ready" event
  */
 app.on('ready', () => {
+  'use strict';
   // here we actually configure the behavour of electronJS
   const window = new BrowserWindow({
     width: electronConfig.URL_LAUNCHER_WIDTH,
@@ -51,6 +59,7 @@ app.on('ready', () => {
     title: electronConfig.URL_LAUNCHER_TITLE,
     kiosk: !!(electronConfig.URL_LAUNCHER_KIOSK),
     webPreferences: {
+      sandbox: false,
       nodeIntegration: !!(electronConfig.URL_LAUNCHER_NODE),
       zoomFactor: electronConfig.URL_LAUNCHER_ZOOM,
       overlayScrollbars: !!(electronConfig.URL_LAUNCHER_OVERLAY_SCROLLBARS),
@@ -66,9 +75,11 @@ app.on('ready', () => {
   // if the env-var is set to true,
   // a portion of the screen will be dedicated to the chrome-dev-tools
   if (electronConfig.URL_LAUNCHER_CONSOLE) {
-    window.openDevTools();
+    window.webContents.openDevTools();
   }
-
+  process.on('uncaughtException', function(err) {
+    console.log(err);
+  });
   // the big red button, here we go
   window.loadURL(electronConfig.URL_LAUNCHER_URL);
 });
