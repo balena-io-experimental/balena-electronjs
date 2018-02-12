@@ -2,6 +2,9 @@
 
 a boilerplate for developing kiosks, digital signage or other human-machine interaction projects based on [ElectronJS](http://electron.atom.io/) and [resin.io](http://resin.io)
 
+## Warning regarding armv6
+This project does not currently support the armv6 architecture (ie Raspberry Pi 0 and 1) due to electron limitations. If the issue is fixed on the electron side, we will include it in this project. More on this [here](https://github.com/electron/electron/issues/4677)
+
 ## Getting started
 
 - Sign up on [resin.io](https://dashboard.resin.io/signup)
