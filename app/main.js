@@ -24,8 +24,14 @@ const electronConfig = {
   URL_LAUNCHER_URL: process.env.URL_LAUNCHER_URL || `file:///${path.join(__dirname, 'data', 'index.html')}`,
   URL_LAUNCHER_ZOOM: parseFloat(process.env.URL_LAUNCHER_ZOOM || 1.0),
   URL_LAUNCHER_OVERLAY_SCROLLBARS: process.env.URL_LAUNCHER_CONSOLE === '1' ? 1 : 0,
+  ELECTRON_ENABLE_HW_ACCELERATION: process.env.ELECTRON_ENABLE_HW_ACCELERATION === '1',
 };
-app.disableHardwareAcceleration();
+
+// Enable / disable hardware acceleration
+if (!electronConfig.ELECTRON_ENABLE_HW_ACCELERATION) {
+  app.disableHardwareAcceleration();
+}
+
 // enable touch events if your device supports them
 if (electronConfig.URL_LAUNCHER_TOUCH) {
   app.commandLine.appendSwitch('--touch-devices');

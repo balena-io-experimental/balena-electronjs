@@ -46,6 +46,7 @@ simply set these [environment varables](http://docs.resin.io/#/pages/management/
 * **`URL_LAUNCHER_OVERLAY_SCROLLBARS`** *bool* (converted from *string*) - enables overlay scrollbars  - *defaults to* `0`
 * **`TFT`** *bool* (converted from *string*) - sets the target display to TFT screen like the [piTFT](https://www.adafruit.com/product/1601) but still requires you to set the proper device tree overlay configuration for it  - *defaults to* `0`
 * **`TFT_ROTATE`**  *int* (converted from *string*) - accepted values: 0,90,180,270 - *defaults to* `0`
+* **`ELECTRON_ENABLE_HW_ACCELERATION`**  *bool* (converted from *string*) - enable hardware acceleration - *defaults to* `0`
 
 ### Related
 
