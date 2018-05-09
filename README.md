@@ -47,6 +47,52 @@ simply set these [environment varables](http://docs.resin.io/#/pages/management/
 * **`TFT`** *bool* (converted from *string*) - sets the target display to TFT screen like the [piTFT](https://www.adafruit.com/product/1601) but still requires you to set the proper device tree overlay configuration for it  - *defaults to* `0`
 * **`TFT_ROTATE`**  *int* (converted from *string*) - accepted values: 0,90,180,270 - *defaults to* `0`
 * **`ELECTRON_ENABLE_HW_ACCELERATION`**  *bool* (converted from *string*) - enable hardware acceleration - *defaults to* `0`
+* **`ELECTRON_RESIN_UPDATE_LOCK`**  *bool* (converted from *string*) - Enable supervisor update locking (see [Update Locking](#update-locking))
+
+### Update Locking
+
+**NOTE:** Take care to only listen for a response *once*, and avoid sending
+multiple requests before the response arrived.
+
+```js
+const {ipcRenderer} = require('electron')
+```
+
+#### Acquiring the Lock
+
+```js
+// Listen for a response
+ipcRenderer.once('resin-update-lock', (event, error) => {
+  if (error) { ... }
+})
+
+// Send the 'lock' command to acquire the lock
+ipcRenderer.send('resin-update-lock', 'lock')
+```
+
+#### Releasing the Lock
+
+```js
+// Listen for a response
+ipcRenderer.once('resin-update-lock', (event, error) => {
+  if (error) { ... }
+})
+
+// Send the 'unlock' command to release the lock
+ipcRenderer.send('resin-update-lock', 'unlock')
+```
+
+#### Checking the Lock
+
+```js
+// Listen for a response
+ipcRenderer.once('resin-update-lock', (event, error, isLocked) => {
+  console.log('Locked:', error || isLocked)
+})
+
+// Send the 'check' command to check on the state of the lock
+ipcRenderer.send('resin-update-lock', 'check')
+```
 
 ### Related
 

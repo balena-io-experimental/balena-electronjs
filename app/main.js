@@ -24,6 +24,7 @@ const electronConfig = {
   URL_LAUNCHER_ZOOM: parseFloat(process.env.URL_LAUNCHER_ZOOM || 1.0),
   URL_LAUNCHER_OVERLAY_SCROLLBARS: process.env.URL_LAUNCHER_CONSOLE === '1' ? 1 : 0,
   ELECTRON_ENABLE_HW_ACCELERATION: process.env.ELECTRON_ENABLE_HW_ACCELERATION === '1',
+  ELECTRON_RESIN_UPDATE_LOCK: process.env.ELECTRON_RESIN_UPDATE_LOCK === '1',
 };
 
 // Enable / disable hardware acceleration
@@ -48,6 +49,34 @@ if (process.env.NODE_ENV === 'development') {
     URL_LAUNCHER_KIOSK: 0,
     URL_LAUNCHER_CONSOLE: 1,
     URL_LAUNCHER_FRAME: 1,
+  });
+}
+
+// Listen for a 'resin-update-lock' to either enable, disable or check
+// the update lock from the renderer process (i.e. the app)
+if (electronConfig.ELECTRON_RESIN_UPDATE_LOCK) {
+  const lockFile = require('lockfile');
+  electron.ipcMain.on('resin-update-lock', (event, command) => {
+    switch (command) {
+      case 'lock':
+        lockFile.lock('/tmp/resin/resin-updates.lock', (error) => {
+          event.sender.send('resin-update-lock', error);
+        });
+        break;
+      case 'unlock':
+        lockFile.unlock('/tmp/resin/resin-updates.lock', (error) => {
+          event.sender.send('resin-update-lock', error);
+        });
+        break;
+      case 'check':
+        lockFile.check('/tmp/resin/resin-updates.lock', (error, isLocked) => {
+          event.sender.send('resin-update-lock', error, isLocked);
+        });
+        break;
+      default:
+        event.sender.send('resin-update-lock', new Error(`Unknown command "${command}"`));
+        break;
+    }
   });
 }
 
