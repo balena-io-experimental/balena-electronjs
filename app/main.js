@@ -1,13 +1,12 @@
 const electron = require('electron');
 const path = require('path');
-const url = require('url');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
 const {
   app,
-  BrowserWindow
+  BrowserWindow,
 } = electron;
 
 // simple parameters initialization
@@ -56,9 +55,8 @@ if (process.env.NODE_ENV === 'development') {
  we initialize our application display as a callback of the electronJS "ready" event
  */
 app.on('ready', () => {
-  'use strict';
   // here we actually configure the behavour of electronJS
-  const window = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: electronConfig.URL_LAUNCHER_WIDTH,
     height: electronConfig.URL_LAUNCHER_HEIGHT,
     frame: !!(electronConfig.URL_LAUNCHER_FRAME),
@@ -72,20 +70,22 @@ app.on('ready', () => {
     },
   });
 
-  window.webContents.on('did-finish-load', () => {
+  mainWindow.webContents.on('did-finish-load', () => {
     setTimeout(() => {
-      window.show();
+      mainWindow.show();
     }, 300);
   });
 
   // if the env-var is set to true,
   // a portion of the screen will be dedicated to the chrome-dev-tools
   if (electronConfig.URL_LAUNCHER_CONSOLE) {
-    window.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
   }
-  process.on('uncaughtException', function(err) {
+
+  process.on('uncaughtException', (err) => {
     console.log(err);
   });
+
   // the big red button, here we go
-  window.loadURL(electronConfig.URL_LAUNCHER_URL);
+  mainWindow.loadURL(electronConfig.URL_LAUNCHER_URL);
 });
