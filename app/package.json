@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "NODE_ENV=development electron .",
     "lint": "eslint .",
-    "start": "NODE_ENV=production startx ./node_modules/electron/dist/electron ."
+    "start": "NODE_ENV=production startx ./node_modules/electron/dist/electron .",
+    "local": "NODE_ENV=production electron ."
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,8 @@
   ],
   "dependencies": {
     "electron": "~1.6.16",
-    "electron-rebuild": "^1.7.2"
+    "electron-rebuild": "^1.7.2",
+    "lockfile": "^1.0.4"
   },
   "author": "Carlo Maria Curinga",
   "license": "Apache-2.0",
