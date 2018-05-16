@@ -25,6 +25,8 @@ const electronConfig = {
   URL_LAUNCHER_OVERLAY_SCROLLBARS: process.env.URL_LAUNCHER_CONSOLE === '1' ? 1 : 0,
   ELECTRON_ENABLE_HW_ACCELERATION: process.env.ELECTRON_ENABLE_HW_ACCELERATION === '1',
   ELECTRON_RESIN_UPDATE_LOCK: process.env.ELECTRON_RESIN_UPDATE_LOCK === '1',
+  ELECTRON_APP_DATA_DIR: process.env.ELECTRON_APP_DATA_DIR,
+  ELECTRON_USER_DATA_DIR: process.env.ELECTRON_USER_DATA_DIR,
 };
 
 // Enable / disable hardware acceleration
@@ -39,6 +41,18 @@ if (electronConfig.URL_LAUNCHER_TOUCH) {
 // simulate touch events - might be useful for touchscreen with partial driver support
 if (electronConfig.URL_LAUNCHER_TOUCH_SIMULATE) {
   app.commandLine.appendSwitch('--simulate-touch-screen-with-mouse');
+}
+
+// Override the appData directory
+// See https://electronjs.org/docs/api/app#appgetpathname
+if (electronConfig.ELECTRON_APP_DATA_DIR) {
+  electron.app.setPath('appData', electronConfig.ELECTRON_APP_DATA_DIR)
+}
+
+// Override the userData directory
+// NOTE: `userData` defaults to the `appData` directory appended with the app's name
+if (electronConfig.ELECTRON_USER_DATA_DIR) {
+  electron.app.setPath('userData', electronConfig.ELECTRON_USER_DATA_DIR)
 }
 
 if (process.env.NODE_ENV === 'development') {
