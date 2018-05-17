@@ -48,6 +48,8 @@ simply set these [environment varables](http://docs.resin.io/#/pages/management/
 * **`TFT_ROTATE`**  *int* (converted from *string*) - accepted values: 0,90,180,270 - *defaults to* `0`
 * **`ELECTRON_ENABLE_HW_ACCELERATION`**  *bool* (converted from *string*) - enable hardware acceleration - *defaults to* `0`
 * **`ELECTRON_RESIN_UPDATE_LOCK`**  *bool* (converted from *string*) - Enable supervisor update locking (see [Update Locking](#update-locking))
+* **`ELECTRON_APP_DATA_DIR`**  *string* - Override the `appData` directory (see [Electron API Documentation: app](https://electronjs.org/docs/api/app#appgetpathname))
+* **`ELECTRON_USER_DATA_DIR`**  *string* - Override the `userData` directory (see [Electron API Documentation: app](https://electronjs.org/docs/api/app#appgetpathname))
 
 ### Update Locking
 
