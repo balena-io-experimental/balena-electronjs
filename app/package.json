@@ -5,10 +5,10 @@
   "main": "main.js",
   "homepage": "./",
   "scripts": {
-    "dev": "react-scripts start & URL_LAUNCHER_NODE=1 URL_LAUNCHER_URL=http://localhost:3000 NODE_ENV=development electron .",
+    "dev": "BROWSER=none react-scripts start & URL_LAUNCHER_NODE=1 URL_LAUNCHER_URL=http://localhost:3000 NODE_ENV=development electron .",
     "lint": "eslint .",
     "start": "URL_LAUNCHER_NODE=1 NODE_ENV=production startx ./node_modules/electron/dist/electron .",
-    "local": "NODE_ENV=production electron ."
+    "local": "NODE_ENV=production electron .",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
@@ -27,9 +27,9 @@
   "dependencies": {
     "electron": "~1.6.16",
     "electron-rebuild": "^1.7.2",
-    "lockfile": "^1.0.4"
-    "react": "15.4.2",
-    "react-dom": "15.4.2"
+    "lockfile": "^1.0.4",
+    "react": "16.5.2",
+    "react-dom": "16.5.2"
   },
   "author": "Carlo Maria Curinga",
   "license": "Apache-2.0",
