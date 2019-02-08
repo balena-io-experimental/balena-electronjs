@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   xserver-xorg-input-all \
   xserver-xorg-video-fbdev \
   xorg \
+  chromium-browser \
   libxcb-image0 \
   libxcb-util0 \
   xdg-utils \
