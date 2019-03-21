@@ -34,8 +34,6 @@
     "strict": true
   },
   "devDependencies": {
-    "eslint": "latest,
-    "eslint-config-airbnb-base": "latest",
-    "eslint-plugin-import": "latest"
+    "eslint": "latest
   }
 }
