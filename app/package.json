@@ -1,6 +1,6 @@
 {
   "name": "resin-electronjs",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "electronJS-based resin application",
   "main": "main.js",
   "scripts": {
