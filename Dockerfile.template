@@ -1,13 +1,15 @@
-FROM resin/%%RESIN_MACHINE_NAME%%-node:8
+###
+# Build stage
+##
+FROM balenalib/%%BALENA_MACHINE_NAME%%-node:10-build as build
 
-# Install other apt deps
-RUN apt-get update && apt-get install -y --no-install-recommends \
+# Move to app dir
+WORKDIR /usr/src/app
+
+# Install build dependencies
+RUN install_packages \
   apt-utils \
   clang \
-  xserver-xorg-core \
-  xserver-xorg-input-all \
-  xserver-xorg-video-fbdev \
-  xorg \
   libxcb-image0 \
   libxcb-util0 \
   xdg-utils \
@@ -24,28 +26,58 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   libnss3-dev \
   libsmbclient \
   libssh-4 \
+  libexpat-dev 
+
+# Move package.json to filesystem
+COPY ./app/package.json .
+
+# Install npm modules for the application
+RUN    JOBS=MAX npm install --unsafe-perm --production \
+    && node_modules/.bin/electron-rebuild
+
+
+###
+# Runtime
+##
+FROM balenalib/%%BALENA_MACHINE_NAME%%-node:10-run
+
+# Move to app dir
+WORKDIR /usr/src/app
+
+# Install runtime dependencies
+RUN install_packages \
+  xserver-xorg-core \
+  xserver-xorg-input-all \
+  xserver-xorg-video-fbdev \
+  xorg \
+  libxcb-image0 \
+  libxcb-util0 \
+  xdg-utils \
+  libdbus-1-3 \
+  libgtk2.0 \
+  libnotify4 \
+  libgnome-keyring0 \
+  libgconf-2-4 \
+  libasound2 \
+  libcap2 \
+  libcups2 \
+  libxtst6 \
+  libxss1 \
+  libnss3 \
+  libsmbclient \
+  libssh-4 \
   fbset \
-  libexpat-dev && rm -rf /var/lib/apt/lists/*
+  libexpat1
 
 RUN echo "#!/bin/bash" > /etc/X11/xinit/xserverrc \
   && echo "" >> /etc/X11/xinit/xserverrc \
   && echo 'exec /usr/bin/X -s 0 dpms -nocursor -nolisten tcp "$@"' >> /etc/X11/xinit/xserverrc
 
-# Move to app dir
-WORKDIR /usr/src/app
-
-# Move package.json to filesystem
-COPY ./app/package.json ./
-
-# Install npm modules for the application
-RUN JOBS=MAX npm install --unsafe-perm --production && npm cache clean --force && \
-  rm -rf /tmp/* && node_modules/.bin/electron-rebuild
-
 # Move app to filesystem
 COPY ./app ./
 
-## uncomment if you want systemd
-ENV INITSYSTEM on
+# Copy the modules from the build step
+COPY --from=build /usr/src/app/node_modules ./node_modules
 
 # Start app
 CMD ["bash", "/usr/src/app/start.sh"]
