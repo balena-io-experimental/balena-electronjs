@@ -1,4 +1,4 @@
-FROM resin/%%RESIN_MACHINE_NAME%%-node:8
+FROM resin/%%RESIN_MACHINE_NAME%%-node:9
 
 # Install other apt deps
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   libxcb-util0 \
   xdg-utils \
   libdbus-1-dev \
-  libgtk2.0-dev \
+  libgtk-3-dev \
   libnotify-dev \
   libgnome-keyring-dev \
   libgconf2-dev \
