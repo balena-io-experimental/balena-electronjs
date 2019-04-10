@@ -1,1 +1,67 @@
-[]
+- commits:
+    - subject: Add repo.yml to set repo type and versionbot changelog
+      hash: d53c01d61b3cce1c4a30ad04a467f6153c67af36
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Gergely Imreh <gergely@balena.io>
+        signed-off-by: Gergely Imreh <gergely@balena.io>
+      author: Gergely Imreh
+    - subject: 'feat(app): Add config option for appData & userData dirs'
+      hash: 99b39dd29e4b0fb23e002a13a7e9ece8f343fc46
+      body: |
+        This adds options to override Electron's `appData` and `userData` paths
+      footer:
+        Change-Type: minor
+        change-type: minor
+      author: Jonas Hermsmeier
+    - subject: 'fix(config): Fix overlay scrollbar env var check'
+      hash: cd81e56dda2784a772ef65d9388f786bfccfcdcb
+      body: ''
+      footer:
+        Change-Type: patch
+        change-type: patch
+      author: Jonas Hermsmeier
+    - subject: 'feat(app): Add API for resin update locking'
+      hash: e013ac00c04c1f7733ff21cdf034ab72c7cd7db2
+      body: ''
+      footer:
+        Change-Type: minor
+        change-type: minor
+      author: Jonas Hermsmeier
+    - subject: 'fix(app): Fix mainWindow reference & lint errors'
+      hash: cc29559eebd72164ba81ff9b781ab0e937b04d59
+      body: |
+        This fixes some linter errors, and the global reference to `mainWindow`
+        to prevent unintended window garbage collection
+      footer:
+        Change-Type: patch
+        change-type: patch
+      author: Jonas Hermsmeier
+    - subject: 'feat(app): Make hardware acceleration configurable'
+      hash: a7c0bed260a186813c0c7f0d363608ba9d1a0d8d
+      body: |
+        This adds an environment variable to configure hardware acceleration.
+      footer:
+        Change-Type: minor
+        change-type: minor
+      author: Jonas Hermsmeier
+    - subject: 'refactor: add `eslint`; multiple small refactorings'
+      hash: 2f30d32ead2ffc4472a5256e30cf33b421b7b0cc
+      body: ''
+      footer:
+        Change-Type: patch
+        change-type: patch
+        Closes: 'https://github.com/resin-io/resin-electronjs/issues/30'
+        closes: 'https://github.com/resin-io/resin-electronjs/issues/30'
+      author: Ștefan Daniel Mihăilă
+    - subject: 'refactor: add `.editorconfig`; use 2 spaces instead of 4 spaces indent'
+      hash: 7e601ebad5bc1a5889630b0c762c2db87c2ae163
+      body: ''
+      footer:
+        Change-Type: patch
+        change-type: patch
+      author: Ștefan Daniel Mihăilă
+  version: 0.1.0
+  date: 2019-04-10T14:13:38.038Z
