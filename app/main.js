@@ -18,13 +18,13 @@ const electronConfig = {
   URL_LAUNCHER_NODE: process.env.URL_LAUNCHER_NODE === '1' ? 1 : 0,
   URL_LAUNCHER_WIDTH: parseInt(process.env.URL_LAUNCHER_WIDTH || 1920, 10),
   URL_LAUNCHER_HEIGHT: parseInt(process.env.URL_LAUNCHER_HEIGHT || 1080, 10),
-  URL_LAUNCHER_TITLE: process.env.URL_LAUNCHER_TITLE || 'RESIN.IO',
+  URL_LAUNCHER_TITLE: process.env.URL_LAUNCHER_TITLE || 'BALENA.IO',
   URL_LAUNCHER_CONSOLE: process.env.URL_LAUNCHER_CONSOLE === '1' ? 1 : 0,
   URL_LAUNCHER_URL: process.env.URL_LAUNCHER_URL || `file:///${path.join(__dirname, 'data', 'index.html')}`,
   URL_LAUNCHER_ZOOM: parseFloat(process.env.URL_LAUNCHER_ZOOM || 1.0),
   URL_LAUNCHER_OVERLAY_SCROLLBARS: process.env.URL_LAUNCHER_OVERLAY_SCROLLBARS === '1' ? 1 : 0,
   ELECTRON_ENABLE_HW_ACCELERATION: process.env.ELECTRON_ENABLE_HW_ACCELERATION === '1',
-  ELECTRON_RESIN_UPDATE_LOCK: process.env.ELECTRON_RESIN_UPDATE_LOCK === '1',
+  ELECTRON_BALENA_UPDATE_LOCK: process.env.ELECTRON_BALENA_UPDATE_LOCK === '1',
   ELECTRON_APP_DATA_DIR: process.env.ELECTRON_APP_DATA_DIR,
   ELECTRON_USER_DATA_DIR: process.env.ELECTRON_USER_DATA_DIR,
 };
@@ -66,29 +66,29 @@ if (process.env.NODE_ENV === 'development') {
   });
 }
 
-// Listen for a 'resin-update-lock' to either enable, disable or check
+// Listen for a 'balena-update-lock' to either enable, disable or check
 // the update lock from the renderer process (i.e. the app)
-if (electronConfig.ELECTRON_RESIN_UPDATE_LOCK) {
+if (electronConfig.ELECTRON_BALENA_UPDATE_LOCK) {
   const lockFile = require('lockfile');
-  electron.ipcMain.on('resin-update-lock', (event, command) => {
+  electron.ipcMain.on('balena-update-lock', (event, command) => {
     switch (command) {
       case 'lock':
-        lockFile.lock('/tmp/resin/resin-updates.lock', (error) => {
-          event.sender.send('resin-update-lock', error);
+        lockFile.lock('/tmp/balena/balena-updates.lock', (error) => {
+          event.sender.send('balena-update-lock', error);
         });
         break;
       case 'unlock':
-        lockFile.unlock('/tmp/resin/resin-updates.lock', (error) => {
-          event.sender.send('resin-update-lock', error);
+        lockFile.unlock('/tmp/balena/balena-updates.lock', (error) => {
+          event.sender.send('balena-update-lock', error);
         });
         break;
       case 'check':
-        lockFile.check('/tmp/resin/resin-updates.lock', (error, isLocked) => {
-          event.sender.send('resin-update-lock', error, isLocked);
+        lockFile.check('/tmp/balena/balena-updates.lock', (error, isLocked) => {
+          event.sender.send('balena-update-lock', error, isLocked);
         });
         break;
       default:
-        event.sender.send('resin-update-lock', new Error(`Unknown command "${command}"`));
+        event.sender.send('balena-update-lock', new Error(`Unknown command "${command}"`));
         break;
     }
   });
