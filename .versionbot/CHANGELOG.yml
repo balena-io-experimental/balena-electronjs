@@ -1,4 +1,17 @@
 - commits:
+    - subject: Switch to balenalib base image
+      hash: 5bd034711f7f308fb9a5123fe638fe39e061f6f0
+      body: |
+        As well as multi-stage build to try to save on space
+      footer:
+        Change-type: major
+        change-type: major
+        Signed-off-by: Gergely Imreh <gergely@balena.io>
+        signed-off-by: Gergely Imreh <gergely@balena.io>
+      author: Gergely Imreh
+  version: 1.0.0
+  date: 2019-04-10T15:00:37.678Z
+- commits:
     - subject: Add repo.yml to set repo type and versionbot changelog
       hash: d53c01d61b3cce1c4a30ad04a467f6153c67af36
       body: ''
