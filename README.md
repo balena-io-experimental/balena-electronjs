@@ -1,4 +1,4 @@
-# Balrna Electronjs
+# Balena Electronjs
 
 a boilerplate for developing kiosks, digital signage or other human-machine interaction projects based on [ElectronJS](http://electron.atom.io/) and [balena](http://balena.io)
 
