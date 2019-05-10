@@ -66,29 +66,29 @@ if (process.env.NODE_ENV === 'development') {
   });
 }
 
-// Listen for a 'balena-update-lock' to either enable, disable or check
+// Listen for a 'update-lock' to either enable, disable or check
 // the update lock from the renderer process (i.e. the app)
 if (electronConfig.ELECTRON_BALENA_UPDATE_LOCK) {
   const lockFile = require('lockfile');
-  electron.ipcMain.on('balena-update-lock', (event, command) => {
+  electron.ipcMain.on('update-lock', (event, command) => {
     switch (command) {
       case 'lock':
-        lockFile.lock('/tmp/balena/balena-updates.lock', (error) => {
-          event.sender.send('balena-update-lock', error);
+        lockFile.lock('/tmp/balena/updates.lock', (error) => {
+          event.sender.send('update-lock', error);
         });
         break;
       case 'unlock':
-        lockFile.unlock('/tmp/balena/balena-updates.lock', (error) => {
-          event.sender.send('balena-update-lock', error);
+        lockFile.unlock('/tmp/balena/updates.lock', (error) => {
+          event.sender.send('update-lock', error);
         });
         break;
       case 'check':
-        lockFile.check('/tmp/balena/balena-updates.lock', (error, isLocked) => {
-          event.sender.send('balena-update-lock', error, isLocked);
+        lockFile.check('/tmp/balena/updates.lock', (error, isLocked) => {
+          event.sender.send('update-lock', error, isLocked);
         });
         break;
       default:
-        event.sender.send('balena-update-lock', new Error(`Unknown command "${command}"`));
+        event.sender.send('update-lock', new Error(`Unknown command "${command}"`));
         break;
     }
   });

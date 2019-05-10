@@ -8,7 +8,7 @@ This project does not currently support the armv6 architecture (ie Raspberry Pi 
 ## Getting started
 
 - Sign up on [balena](https://dashboard.balena-cloud.com/signup)
-- go throught the [getting started guide](https://www.balena.io/docs/learn/getting-started/raspberry-pi/nodejs/) and create a new application
+- go through the [getting started guide](https://www.balena.io/docs/learn/getting-started/raspberry-pi/nodejs/) and create a new application
 - install the [balena-cli](https://github.com/balena-io/balena-cli) on your computer
 - clone or download this repository to your local workspace
 - `balena push <applicationName>`
