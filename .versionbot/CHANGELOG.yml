@@ -1,4 +1,25 @@
 - commits:
+    - subject: Small fixes
+      hash: 8133a1a3d445b1d7585a3fcbd93c305531c64109
+      body: ''
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Daniel Andrade <daniel@balena.io>
+        signed-off-by: Daniel Andrade <daniel@balena.io>
+      author: Daniel Andrade
+    - subject: Rename resin to balena
+      hash: d4a18763805bf32d1a46399b66eb85059eb2fccb
+      body: ''
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Daniel Andrade <daniel@balena.io>
+        signed-off-by: Daniel Andrade <daniel@balena.io>
+      author: Daniel Andrade
+  version: 1.1.0
+  date: 2019-05-10T12:48:40.229Z
+- commits:
     - subject: Switch to balenalib base image
       hash: 5bd034711f7f308fb9a5123fe638fe39e061f6f0
       body: |
