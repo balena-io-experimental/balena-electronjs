@@ -1,18 +1,18 @@
 {
-  "name": "resin-electronjs",
-  "description": "electronJS-based rpi2 resin application",
+  "name": "balena-electronjs",
+  "description": "electronJS-based rpi balena application",
   "main": "main.js",
   "authors": [
     "Carlo Maria Curinga"
   ],
   "license": "Apache-2.0",
   "keywords": [
-    "resin",
+    "balena",
     "io",
     "electron",
     "js"
   ],
-  "homepage": "https://github.com/resin-io/resin-electronjs",
+  "homepage": "https://github.com/balena-io/balena-electronjs",
   "moduleType": [],
   "private": true,
   "ignore": [
