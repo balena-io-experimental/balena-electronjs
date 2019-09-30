@@ -1,7 +1,7 @@
 ###
 # Build stage
 ##
-FROM balenalib/%%BALENA_MACHINE_NAME%%-node:10-build as build
+FROM balenalib/%%BALENA_MACHINE_NAME%%-node:12-buster-build as build
 
 # Move to app dir
 WORKDIR /usr/src/app
@@ -39,7 +39,7 @@ RUN    JOBS=MAX npm install --unsafe-perm --production \
 ###
 # Runtime
 ##
-FROM balenalib/%%BALENA_MACHINE_NAME%%-node:10-run
+FROM balenalib/%%BALENA_MACHINE_NAME%%-node:12-buster-run
 
 # Move to app dir
 WORKDIR /usr/src/app
