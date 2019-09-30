@@ -1,4 +1,27 @@
 - commits:
+    - subject: Specify debian buster and Use node 12
+      hash: e62036bd010e56431b6f71ff5df3d26a419a863c
+      body: ''
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Rahul Thakoor <rahul@balena.io>
+        signed-off-by: Rahul Thakoor <rahul@balena.io>
+      author: rahul-thakoor
+    - subject: >-
+        Fix issue with Buster base image and add support for arm64 - replace
+        `libgnome-keyring` with `libsecret` - add dockerfile targeting arm64
+      hash: 4e7faf39322b92156dcca38ba4b887c0d43f9543
+      body: ''
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Rahul Thakoor <rahul@balena.io>
+        signed-off-by: Rahul Thakoor <rahul@balena.io>
+      author: Rahul Thakoor
+  version: 1.2.0
+  date: 2019-09-30T06:03:00.883Z
+- commits:
     - subject: Small fixes
       hash: 8133a1a3d445b1d7585a3fcbd93c305531c64109
       body: ''
