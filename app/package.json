@@ -20,7 +20,7 @@
     "js"
   ],
   "dependencies": {
-    "electron": "~1.6.16",
+    "electron": "~9.1.0",
     "electron-rebuild": "^1.7.2",
     "lockfile": "^1.0.4"
   },
