@@ -1,4 +1,6 @@
-# Balena Electronjs
+# This project is deprecated and replaced by [balena-electron-env](https://github.com/balenablocks/balena-electron-env)
+---
+## Balena Electronjs
 
 a boilerplate for developing kiosks, digital signage or other human-machine interaction projects based on [ElectronJS](http://electron.atom.io/) and [balena](http://balena.io)
 
